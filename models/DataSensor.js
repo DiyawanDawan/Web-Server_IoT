@@ -31,7 +31,7 @@ module.exports = (sequelize, DataTypes) => {
       },
     },
     {
-      tableName: "tb_data_sensor", // Tetapkan nama tabel Anda
+      tableName: "datasensor", // Tetapkan nama tabel Anda
       timestamps: true,
     }
   );
