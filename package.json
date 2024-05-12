@@ -17,6 +17,7 @@
 		"fastest-validator": "^1.17.0",
 		"jsonwebtoken": "^9.0.2",
 		"moment": "^2.30.1",
+		"moment-timezone": "^0.5.45",
 		"morgan": "~1.9.1",
 		"mysql2": "^3.6.5",
 		"nanoid": "^3.3.7",

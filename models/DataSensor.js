@@ -41,7 +41,7 @@
 
 // nh4.js (Model NH4)
 const { nanoid } = require("nanoid");
-
+const moment = require('moment-timezone');
 module.exports = (sequelize, DataTypes) => {
   const DataSensor = sequelize.define(
     "DataSensor", // Ubah nama model menjadi DataSensor
@@ -67,7 +67,8 @@ module.exports = (sequelize, DataTypes) => {
       },
       createdAt: { // Ganti nama kolom dari createdAt menjadi timestamp
         type: DataTypes.DATE,
-        defaultValue: DataTypes.NOW,
+        defaultValue: () => moment().tz('Asia/Jakarta').format('YYYY-MM-DD HH:mm:ss'),
+        // defaultValue: DataTypes.NOW,
         allowNull: false,
       },
     },

@@ -1,16 +1,21 @@
 const moment = require('moment');
 const { DataSensor } = require('../models');
 
-exports.getAllData = async (req, res) => {
+exports.AllsNh3 = async (req, res) => {
     try {
-        const allDatas = await DataSensor.findAll();
+        const allDatas = await DataSensor.findAll({
+            where: {
+                sensorType: 'NH3' // Filter data hanya untuk sensorType 'PH'
+            }
+        });
+
         // Mengonversi createdAt dan updatedAt menjadi string dengan format lokal
         const formattedData = allDatas.map(data => ({
             id: data.id,
             sensorType: data.sensorType,
             value: data.value,
             unit: data.unit,
-            createdAt: moment(data.createdAt).format('YYYY-MM-DD HH:mm:ss'), // Adjust format as needed
+            createdAt: moment(data.createdAt).format('YYYY-MM-DD HH:mm:ss'), // Sesuaikan format sesuai kebutuhan
         }));
 
         // Mengirim respons JSON ke klien
