@@ -24,21 +24,35 @@ module.exports = {
       {
         id: nanoid(6),
         sensorType: "PH", // Tambahkan sensorType untuk MQ-135 (penyesuaian penamaan)
-        value: 1.15, // Tambahkan value untuk MQ-135
+        value: 4.1, // Tambahkan value untuk MQ-135
+        unit: "ppm", // Tambahkan unit untuk MQ-135
+        createdAt:  currentTime.toDate(),
+      },
+      {
+        id: nanoid(6),
+        sensorType: "NH3", // Tambahkan sensorType untuk MQ-135 (penyesuaian penamaan)
+        value: 2.50, // Tambahkan value untuk MQ-135
+        unit: "PH", // Tambahkan unit untuk MQ-135
+        createdAt:  currentTime.toDate(),
+      },
+      {
+        id: nanoid(6),
+        sensorType: "NH3", // Tambahkan sensorType untuk MQ-135 (penyesuaian penamaan)
+        value: 3.50, // Tambahkan value untuk MQ-135
+        unit: "PH", // Tambahkan unit untuk MQ-135
+        createdAt:  currentTime.toDate(),
+      },
+      {
+        id: nanoid(6),
+        sensorType: "NH3", // Tambahkan sensorType untuk MQ-135 (penyesuaian penamaan)
+        value: 4.1, // Tambahkan value untuk MQ-135
         unit: "PH", // Tambahkan unit untuk MQ-135
         createdAt:  currentTime.toDate(),
       },
       {
         id: nanoid(6),
         sensorType: "PH", // Tambahkan sensorType untuk MQ-135 (penyesuaian penamaan)
-        value: 3.15, // Tambahkan value untuk MQ-135
-        unit: "PH", // Tambahkan unit untuk MQ-135
-        createdAt:  currentTime.toDate(),
-      },
-      {
-        id: nanoid(6),
-        sensorType: "PH", // Tambahkan sensorType untuk MQ-135 (penyesuaian penamaan)
-        value: 4.5, // Tambahkan value untuk MQ-135
+        value: 1.1, // Tambahkan value untuk MQ-135
         unit: "PH", // Tambahkan unit untuk MQ-135
         createdAt:  currentTime.toDate(),
       },

@@ -1,4 +1,5 @@
 const moment = require('moment');
+const momentTimeZone = require('moment-timezone');
 const { DataSensor, Sequelize } = require('../models');
 const { Op } = Sequelize;
 
@@ -10,9 +11,9 @@ exports.Average = async (req, res) => {
         if (!moment(tanggal, 'YYYY-MM-DD', true).isValid()) {
             return res.status(400).json({ error: true, message: "Invalid date format. Please provide the date in YYYY-MM-DD format." });
         }
-        
-        // pastikan tanggal dalam format yang diharapkan
-        tanggal = moment(tanggal, 'YYYY-MM-DD').format('YYYY-MM-DD');
+
+        // Konversi tanggal ke zona waktu Jakarta
+        tanggal = momentTimeZone.tz(tanggal, 'Asia/Jakarta').format('YYYY-MM-DD');
 
         const allDatas = await DataSensor.findAll({
             where: {
@@ -26,7 +27,7 @@ exports.Average = async (req, res) => {
         // Group the data by date and sensor type
         const groupedData = {};
         allDatas.forEach(data => {
-            const date = moment(data.createdAt).format('YYYY-MM-DD');
+            const date = momentTimeZone(data.createdAt).tz('Asia/Jakarta').format('YYYY-MM-DD');
             if (!groupedData[date]) {
                 groupedData[date] = { NH3: [], PH: [] };
             }
