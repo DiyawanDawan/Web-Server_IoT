@@ -1,6 +1,18 @@
 # web server iot
 
+### Front End
 
+https://github.com/DiyawanDawan/Web-Bumiku
+
+### Web Server 
+
+https://github.com/DiyawanDawan/Web-Server_IoT
+
+### Databse 
+<ul>
+    <li>XAMPP</li>
+    <li>MYSQl / SQL</li>
+</ul>
 
 
 Cara melakukan migrasi DB
