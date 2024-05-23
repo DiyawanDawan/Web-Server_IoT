@@ -1,8 +1,9 @@
 const moment = require('moment');
-const { Op } = require('sequelize');
+const { Op, fn, col } = require('sequelize');
 
 const { DataSensor } = require('../models');
-exports.DataWithDay = async (req, res) => {
+
+exports.DataPPMNHWithDay = async (req, res) => {
     try {
         let { tanggal, sensorType } = req.query;
 
@@ -33,9 +34,12 @@ exports.DataWithDay = async (req, res) => {
                 createdAt: {
                     [Op.between]: [moment(tanggal).startOf('day').toDate(), moment(tanggal).endOf('day').toDate()]
                 }
-            }
-        },{
-            order: [['createdAt', 'DESC']] // Mengurutkan berdasarkan createdAt dari yang terbaru ke yang terlama
+            },
+            attributes: [
+                'sensorType',
+                [fn('AVG', col('value')), 'averageValue']
+            ],
+            group: ['sensorType']
         });
 
         if (sensorData.length === 0) {
@@ -44,11 +48,8 @@ exports.DataWithDay = async (req, res) => {
 
         // Mengonversi tanggal createdAt ke format JSON tanpa zona waktu
         const sensorDataWithoutTimeZone = sensorData.map(data => ({
-            id: data.id,
             sensorType: data.sensorType,
-            value: data.value,
-            unit: data.unit,
-            createdAt: moment(data.createdAt).format('YYYY-MM-DD HH:mm:ss') // Konversi ke format JSON tanpa zona waktu
+            averageValue: parseFloat(data.dataValues.averageValue).toFixed(2)
         }));
 
         console.log(`Requested Date: ${tanggal}, Sensor Type: ${sensorType}`);

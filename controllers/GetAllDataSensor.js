@@ -3,7 +3,9 @@ const { DataSensor } = require('../models');
 
 exports.getAllData = async (req, res) => {
     try {
-        const allDatas = await DataSensor.findAll();
+        const allDatas = await DataSensor.findAll({
+            order: [['createdAt', 'DESC']] // Mengurutkan berdasarkan createdAt dari yang terbaru ke yang terlama
+        });
         // Mengonversi createdAt dan updatedAt menjadi string dengan format lokal
         const formattedData = allDatas.map(data => ({
             id: data.id,

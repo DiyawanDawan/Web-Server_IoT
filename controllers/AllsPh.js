@@ -7,6 +7,9 @@ exports.AllsPh = async (req, res) => {
             where: {
                 sensorType: 'PH' // Filter data hanya untuk sensorType 'PH'
             }
+        },
+        {
+            order: [['createdAt', 'DESC']] // Mengurutkan berdasarkan createdAt dari yang terbaru ke yang terlama
         });
 
         // Mengonversi createdAt dan updatedAt menjadi string dengan format lokal

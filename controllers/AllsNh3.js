@@ -7,6 +7,9 @@ exports.AllsNh3 = async (req, res) => {
             where: {
                 sensorType: 'NH3' // Filter data hanya untuk sensorType 'PH'
             }
+        },
+        {
+            order: [['createdAt', 'DESC']] // Mengurutkan berdasarkan createdAt dari yang terbaru ke yang terlama
         });
 
         // Mengonversi createdAt dan updatedAt menjadi string dengan format lokal
