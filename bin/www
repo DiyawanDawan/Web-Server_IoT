@@ -9,16 +9,43 @@ require("dotenv").config();
 var app = require("../app");
 var debug = require("debug")("hemo-life-api:server");
 var http = require("http");
+var Sequelize = require("sequelize");
 
 /**
  * Get port from environment and store in Express.
  */
 
 var port = normalizePort(process.env.PORT || "3000");
-// var host = process.env.HOST_PROD || "192.168.149.99";
 var host = process.env.HOST_PROD || "127.0.0.1";
 
 app.set("port", port);
+
+// Sequelize database connection
+var sequelize = new Sequelize(process.env.DATABASE, process.env.USERNAME, process.env.PASSWORD, {
+    host: process.env.DB_HOST,
+    port: process.env.DB_PORT,
+    dialect: 'mysql',
+    dialectOptions: {
+        ssl: {
+            require: true,
+            rejectUnauthorized: false
+        }
+    },
+    define: {
+        timestamps: false // Disable sequelize automatic timestamps
+    },
+    logging: false // Disable sequelize query logging
+});
+
+// Test the database connection
+sequelize
+    .authenticate()
+    .then(() => {
+        console.log('Database connection has been established successfully.');
+    })
+    .catch(err => {
+        console.error('Unable to connect to the database:', err);
+    });
 
 /**
  * Create HTTP server.
@@ -39,19 +66,19 @@ server.on("listening", onListening);
  */
 
 function normalizePort(val) {
-	var port = parseInt(val, 10);
+    var port = parseInt(val, 10);
 
-	if (isNaN(port)) {
-		// named pipe
-		return val;
-	}
+    if (isNaN(port)) {
+        // named pipe
+        return val;
+    }
 
-	if (port >= 0) {
-		// port number
-		return port;
-	}
+    if (port >= 0) {
+        // port number
+        return port;
+    }
 
-	return false;
+    return false;
 }
 
 /**
@@ -59,25 +86,25 @@ function normalizePort(val) {
  */
 
 function onError(error) {
-	if (error.syscall !== "listen") {
-		throw error;
-	}
+    if (error.syscall !== "listen") {
+        throw error;
+    }
 
-	var bind = typeof port === "string" ? "Pipe " + port : "Port " + port;
+    var bind = typeof port === "string" ? "Pipe " + port : "Port " + port;
 
-	// handle specific listen errors with friendly messages
-	switch (error.code) {
-		case "EACCES":
-			console.error(bind + " requires elevated privileges");
-			process.exit(1);
-			break;
-		case "EADDRINUSE":
-			console.error(bind + " is already in use");
-			process.exit(1);
-			break;
-		default:
-			throw error;
-	}
+    // handle specific listen errors with friendly messages
+    switch (error.code) {
+        case "EACCES":
+            console.error(bind + " requires elevated privileges");
+            process.exit(1);
+            break;
+        case "EADDRINUSE":
+            console.error(bind + " is already in use");
+            process.exit(1);
+            break;
+        default:
+            throw error;
+    }
 }
 
 /**
