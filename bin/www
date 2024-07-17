@@ -83,7 +83,11 @@ function onError(error) {
 /**
  * Event listener for HTTP server "listening" event.
  */
-console.log("Starting server on port " + port);
-server.listen(port, host, () => {
+
+function onListening() {
+    var addr = server.address();
+    var bind = typeof addr === "string" ? "pipe " + addr : "port " + addr.port;
+    debug("Listening on " + bind);
+
     console.log("Server is running on http://" + host + ":" + port);
-});
+}
