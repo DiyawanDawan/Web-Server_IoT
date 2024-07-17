@@ -26,3 +26,4 @@ module.exports = {
     dialect: DB_DIALECT,
   },
 };
+
