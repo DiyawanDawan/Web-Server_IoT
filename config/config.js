@@ -5,11 +5,11 @@ const { DB_USERNAME, DB_PASSWORD, DB_HOSTNAME, DB_NAME, DB_DIALECT } =
 
 module.exports = {
   development: {
-    // username: DB_USERNAME,
-    // password: DB_PASSWORD,
-    // database: DB_NAME,
-    // host: DB_HOSTNAME,
-    // dialect: DB_DIALECT,
+    username: DB_USERNAME,
+    password: DB_PASSWORD,
+    database: DB_NAME,
+    host: DB_HOSTNAME,
+    dialect: DB_DIALECT,
   },
   test: {
     username: DB_USERNAME,
