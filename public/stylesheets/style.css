@@ -3,6 +3,43 @@ body {
   font: 14px "Lucida Grande", Helvetica, Arial, sans-serif;
 }
 
+ul {
+  list-style-type: none;
+  padding: 0;
+}
+
+li {
+  margin: 10px 0;
+}
+
 a {
-  color: #00B7FF;
+  text-decoration: none;
+  color: #2196F3;
+  font-weight: bold;
+}
+
+a:hover {
+  text-decoration: underline;
+}
+
+.api-links {
+  margin-top: 20px;
+  padding: 10px;
+  background-color: #ffffff;
+  border: 1px solid #ddd;
+  border-radius: 4px;
+}
+
+.api-links a {
+  display: block;
+  margin: 5px 0;
+  padding: 10px;
+  background-color: #f1f1f1;
+  border: 1px solid #ddd;
+  border-radius: 4px;
+  transition: background-color 0.3s ease;
+}
+
+.api-links a:hover {
+  background-color: #e0e0e0;
 }

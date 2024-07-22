@@ -1,26 +1,296 @@
-<html>
+<!DOCTYPE html>
+<html lang="en">
 
 <head>
-  <title>Express</title>
-  <link rel="stylesheet" href="/stylesheets/style.css">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="stylesheets/style.css">
+  <title>API Documentation</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      line-height: 1.6;
+    }
+    pre {
+      background-color: #c4c4c4;
+      padding: 4px;
+      margin: auto;
+      border: 1px solid #919191;
+      overflow-x: auto;
+    }
+
+    h2 {
+      margin-top: 20px;
+    }
+    code {
+      color: #d15454;
+      background: #c4c4c4;
+      padding: 6px 4px;
+      border-radius: 4px;
+    }
+  </style>
 </head>
 
 <body>
-  <h1>Express</h1>
-  <p>Welcome to Express</p>
-  <ul>
-    
-    <li><a href="/v1/api/postData">postData</a></li>
-    <li> <a href="/v1/api/allDataSensors">allDataSensors</a></li>
-    <li> <a href="/v1/api/allsPh">allsPh</a></li>
-    <li> <a href="/v1/api/allsNH3">allsNH3</a></li>
-    <li> <a href="/v1/api/everage">everage</a></li>
-    <li><a href="/v1/api/withday">withday</a></li>
-    <li><a href="/v1/api/rataratappmnhDays">rataratappmnhDays</a></li>
-    <li><a href="/v1/api/count">count</a></li>
-    
-  </ul>
+  <h1>API Documentation</h1>
+  <h2>Test Api Now</h2>
+  <div class="api-links">
+    <ul>
+        <li><a href="/v1/api/postData">postData</a></li>
+        <li><a href="/v1/api/allDataSensors">allDataSensors</a></li>
+        <li><a href="/v1/api/allsPh">allsPh</a></li>
+        <li><a href="/v1/api/allsNH3">allsNH3</a></li>
+        <li><a href="/v1/api/everage">everage</a></li>
+        <li><a href="/v1/api/withday">withday</a></li>
+        <li><a href="/v1/api/rataratappmnhDays">rataratappmnhDays</a></li>
+        <li><a href="/v1/api/count">count</a></li>
+    </ul>
+</div>
 
+    <h2>Post Data Sensor</h2>
+    <p><strong>URL:</strong> <code>/v1/api/postData</code></p>
+    <p><strong>Method:</strong> POST</p>
+    <p><strong>Request Body:</strong></p>
+    <pre>
+    <code>
+      {
+        "sensorType": "NH3",
+        "value": 0.45,
+        "unit": "PPM"
+      }
+    </code>
+    </pre>
+    <p><strong>Response Example:</strong></p>
+    <pre>
+    <code>
+      {
+      "success": true,
+        "data": {
+          "id": 1,
+          "sensorType": "NH3",
+          "value": 0.45,
+          "unit": "PPM",
+          "createdAt": "2024-07-20T15:00:00.000Z",
+          "updatedAt": "2024-07-20T15:00:00.000Z"
+        }
+      }
+    </code>
+    </pre>
+
+    <h2>Get All Data</h2>
+    <p><strong>URL:</strong> <code>/v1/api/allDataSensors</code></p>
+    <p><strong>Method:</strong> GET</p>
+    <p><strong>Response Example:</strong></p>
+    <pre>
+   <code>
+    {
+      "success": true,
+      "data": [
+        {
+          "id": "YJsOGi",
+          "sensorType": "NH3",
+          "value": 6.8,
+          "unit": "ppm",
+          "createdAt": "2024-07-18 13:28:44"
+        },
+        {
+          "id": "RaJzTt",
+          "sensorType": "NH3",
+          "value": 6.8,
+          "unit": "ppm",
+          "createdAt": "2024-07-17 12:51:01"
+        },
+        {
+          "id": "HmkXKI",
+          "sensorType": "NH3",
+          "value": 3.4,
+          "unit": "ppm",
+          "createdAt": "2024-05-23 14:25:34"
+        },
+      ],
+    }
+   </code>
+</pre>
+
+
+    <h2>All PH Data</h2>
+    <p><strong>URL:</strong><code>/v1/api/allsPh</code></p>
+    <p><strong>Method:</strong> GET</p>
+    <p><strong>Response:</strong></p>
+    <pre>
+    <code>
+      {
+        "success": true,
+        "data": [
+          {
+            "id": "-qS9Nx",
+            "sensorType": "PH",
+            "value": 1.2,
+            "unit": "PH",
+            "createdAt": "2024-05-16 05:32:53"
+          },
+          {
+            "id": "105STx",
+            "sensorType": "PH",
+            "value": 1.13,
+            "unit": "PH",
+            "createdAt": "2024-05-23 13:25:34"
+          },
+        ],
+      }
+    </code>
+  </pre>
+
+    <h2>All NH3 Data</h2>
+    <p><strong>URL:</strong> <code>/v1/api/allsNH3</code></p>
+    <p><strong>Method:</strong> GET</p>
+    <p><strong>Response:</strong></p>
+    <pre>
+    <code>
+      {
+        "success": true,
+        "data": [
+          {
+            "id": "3fHlCd",
+            "sensorType": "NH3",
+            "value": 1.4,
+            "unit": "ppm",
+            "createdAt": "2024-05-23 14:24:11"
+          },
+          {
+            "id": "7NVTX2",
+            "sensorType": "NH3",
+            "value": 6.4,
+            "unit": "ppm",
+            "createdAt": "2024-05-23 14:16:38"
+          },
+          {
+            "id": "fcyl7p",
+            "sensorType": "NH3",
+            "value": 1.2,
+            "unit": "PH",
+            "createdAt": "2024-05-16 05:33:41"
+          },
+        ],
+      }
+    </code>
+    </pre>
+
+    <h2>Get Average Data</h2>
+    <p><strong>URL:</strong> <code>/v1/api/average</code></p>
+    <p><strong>Method:</strong> GET</p>
+    <p><strong>Query Parameters:</strong></p>
+    <ul>
+      <li><code>tanggal</code> (required): The date in <code>YYYY-MM-DD</code> format</li>
+    </ul>
+    <h3>Request Example:</h3>
+    <pre>
+      <code>GET /v1/api/average?tanggal=2024-07-20</code>
+    </pre>
+    <h3>Response Example:</h3>
+    <pre>
+      <code>
+        {
+          "success": true,
+          "data": {
+            "NH3": {
+              "average": "0.45",
+              "unit": "PPM"
+            },
+            "PH": {
+              "average": "7.10",
+              "unit": "pH"
+            }
+          }
+        }
+    </code>
+  </pre>
+
+    </pre>
+    <h2>Get Data With Day</h2>
+    <p><strong>URL:</strong> <code>/v1/api/withday</code></p>
+    <p><strong>Method:</strong> GET</p>
+    <p><strong>Query Parameters:</strong></p>
+    <ul>
+      <li><code>tanggal</code> (optional): The date in <code>YYYY-MM-DD</code> format. If not provided, defaults to
+        today's date.</li>
+      <li><code>sensorType</code> (optional): The type of sensor data to retrieve. Can be either <code>NH3</code> or
+        <code>PH</code>. Defaults to <code>NH3</code>.
+      </li>
+    </ul>
+    <h3>Request Example:</h3>
+    <pre>
+    <code>GET /v1/api/withday?tanggal=2024-07-20&sensorType=NH3</code>
+      </pre>
+    <h3>Response Example:</h3>
+    <pre>
+      <code>
+        {
+        "success": true,
+          "data": [
+          {
+            "id": 1,
+            "sensorType": "NH3",
+            "value": 0.5,
+            "unit": "PPM",
+            "createdAt": "2024-07-20 14:30:00"
+          },
+          {
+            "id": 2,
+            "sensorType": "NH3",
+            "value": 0.3,
+            "unit": "PPM",
+            "createdAt": "2024-07-20 13:45:00"
+          }
+        ]
+      }
+      </code>
+      </pre>
+
+      <h2>Data PPM NH3 with Day</h2>
+      <p><strong>URL:</strong> <code>/v1/api/rataratappmnhDays?tanggal=2024-07-20&sensorType=NH3</code></p>
+      <p><strong>Method:</strong> GET</p>
+      <p><strong>Query Parameters:</strong></p>
+      <ul>
+          <li><strong>tanggal:</strong> (optional) The date in YYYY-MM-DD format. If not provided, the current date will be used.</li>
+          <li><strong>sensorType:</strong> (optional) The type of sensor. Either 'NH3' or 'PH'. Default is 'NH3'.</li>
+      </ul>
+      <p><strong>Response Example:</strong></p>
+      <pre> 
+        <code>{
+          "success": true,
+          "data": [
+            {
+              "sensorType": "NH3",
+              "averageValue": "0.45"
+            }
+          ]
+        }
+      </code>
+      </pre>
+
+    
+    <h2>Count All Sensors</h2>
+    <p><strong>URL:</strong> <code>/v1/api/count</code></p>
+    <p><strong>Method:</strong> GET</p>
+    <p><strong>Response Example:</strong></p>
+    <pre>
+    <code>
+      {
+        "success": true,
+        "counts": [
+          {
+            "sensorType": "PH",
+            "countPH": 5
+          },
+          {
+            "sensorType": "NH3",
+            "countNH3": 8
+          }
+        ]
+      }
+    </code>
+    </pre>
 </body>
 
 </html>
