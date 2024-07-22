@@ -1,8 +1,13 @@
 body {
-  padding: 50px;
+  /* padding: 50px; */
+  box-sizing: border-box;
+  padding: 0;
+  margin: 0;
   font: 14px "Lucida Grande", Helvetica, Arial, sans-serif;
 }
-
+section {
+  padding: 5rem;
+}
 ul {
   list-style-type: none;
   padding: 0;
@@ -17,7 +22,9 @@ a {
   color: #2196F3;
   font-weight: bold;
 }
-
+footer p {
+  text-align: center;
+}
 a:hover {
   text-decoration: underline;
 }
@@ -42,4 +49,80 @@ a:hover {
 
 .api-links a:hover {
   background-color: #e0e0e0;
+}
+
+footer {
+  margin-top: 1.5rem;
+  padding: 0.2rem 5rem ;
+  background-color: #4b4a4a;
+  color: #fff;
+  /* text-align: center; */
+  font-size: 1rem;
+  margin: auto;
+  position: relative;
+  width: 100%;
+}
+
+
+.footer-content {
+  display: flex;
+  justify-content: space-between;
+  flex-wrap: wrap;
+}
+
+.footer-links, .footer-info {
+  margin-bottom: 1.5rem;
+  flex: 1;
+  min-width: 250px;
+}
+
+.footer-links h2, .footer-info h2 {
+  margin-bottom: 0.7rem;
+  color: #e0e0e0;
+}
+
+.footer-links ul, .footer-info ul {
+  list-style: none;
+  padding: 0;
+}
+
+.footer-links ul li, .footer-info ul li {
+  margin: 5px 0;
+}
+
+.footer-links ul li a, .footer-info ul li a {
+  color: #007bff;
+  text-decoration: none;
+  font-weight: normal;
+  font-size: 1rem;
+  line-height: 1;
+}
+
+.footer-links ul li a:hover, .footer-info ul li a:hover {
+  text-decoration: underline;
+}
+
+.footer-info p {
+  color: #666;
+}
+
+/* Responsive Styles */
+@media (max-width: 768px) {
+  .footer-content {
+      padding: 0.5rem;
+  }
+
+  .footer-links, .footer-info {
+      margin-bottom: 1.2rem;
+  }
+}
+
+@media (max-width: 576px) {
+  .footer-links h2, .footer-info h2 {
+      font-size: 16px;
+  }
+
+  .footer-links ul li a, .footer-info ul li a {
+      font-size: 1rem;
+  }
 }

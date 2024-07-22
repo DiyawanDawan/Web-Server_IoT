@@ -32,6 +32,9 @@
 </head>
 
 <body>
+  <section>
+
+
   <h1>API Documentation Cinta Bumi</h1>
   <h2>Test Api Now</h2>
   <div class="api-links">
@@ -47,7 +50,7 @@
     </ul>
 </div>
 
-    <h2>Post Data Sensor</h2>
+    <h2 id="postData">Post Data Sensor</h2>
     <p><strong>URL:</strong> <code>/v1/api/postData</code></p>
     <p><strong>Method:</strong> POST</p>
     <p><strong>Request Body:</strong></p>
@@ -77,7 +80,7 @@
     </code>
     </pre>
 
-    <h2>Get All Data</h2>
+    <h2 id="allDataSensors">Get All Data</h2>
     <p><strong>URL:</strong> <code>/v1/api/allDataSensors</code></p>
     <p><strong>Method:</strong> GET</p>
     <p><strong>Response Example:</strong></p>
@@ -113,7 +116,7 @@
 </pre>
 
 
-    <h2>All PH Data</h2>
+    <h2 id="allsPh">All PH Data</h2>
     <p><strong>URL:</strong><code>/v1/api/allsPh</code></p>
     <p><strong>Method:</strong> GET</p>
     <p><strong>Response:</strong></p>
@@ -141,7 +144,7 @@
     </code>
   </pre>
 
-    <h2>All NH3 Data</h2>
+    <h2 id="allsNH3">All NH3 Data</h2>
     <p><strong>URL:</strong> <code>/v1/api/allsNH3</code></p>
     <p><strong>Method:</strong> GET</p>
     <p><strong>Response:</strong></p>
@@ -176,7 +179,7 @@
     </code>
     </pre>
 
-    <h2>Get Average Data</h2>
+    <h2 id="everage">Get Average Data</h2>
     <p><strong>URL:</strong> <code>/v1/api/average</code></p>
     <p><strong>Method:</strong> GET</p>
     <p><strong>Query Parameters:</strong></p>
@@ -207,7 +210,7 @@
   </pre>
 
     </pre>
-    <h2>Get Data With Day</h2>
+    <h2 id="withday">Get Data With Day</h2>
     <p><strong>URL:</strong> <code>/v1/api/withday</code></p>
     <p><strong>Method:</strong> GET</p>
     <p><strong>Query Parameters:</strong></p>
@@ -247,7 +250,7 @@
       </code>
       </pre>
 
-      <h2>Data PPM NH3 with Day</h2>
+      <h2 id="rataratappmnhDays">Data PPM NH3 with Day</h2>
       <p><strong>URL:</strong> <code>/v1/api/rataratappmnhDays?tanggal=2024-07-20&sensorType=NH3</code></p>
       <p><strong>Method:</strong> GET</p>
       <p><strong>Query Parameters:</strong></p>
@@ -270,7 +273,7 @@
       </pre>
 
     
-    <h2>Count All Sensors</h2>
+    <h2 id="count">Count All Sensors</h2>
     <p><strong>URL:</strong> <code>/v1/api/count</code></p>
     <p><strong>Method:</strong> GET</p>
     <p><strong>Response Example:</strong></p>
@@ -291,6 +294,32 @@
       }
     </code>
     </pre>
+  </section>
+  <footer>
+    <div class="footer-content">
+        <div class="footer-links">
+            <h2>API Endpoints</h2>
+            <ul>
+                <li><a href="#postData">Post Data</a></li>
+                <li><a href="#allDataSensors">All DataSensors</a></li>
+                <li><a href="#allsPh">All PH</a></li>
+                <li><a href="#allsNH3">All NH3</a></li>
+                <li><a href="#everage">Everage</a></li>
+                <li><a href="#withday">Withday</a></li>
+                <li><a href="#rataratappmnhDays">Ratarata PPM NH Days</a></li>
+                <li><a href="#count">Count</a></li>
+            </ul>
+        </div>
+        <div class="footer-info">
+            <h2>Powered By</h2>
+            <ul>
+                <li><a href="#">Cinta Bumi</a></li>
+            </ul>
+          </div>
+        </div>
+        <p>Copyright © Cinta Bumi x Diyawan</p>
+</footer>
+
 </body>
 
 </html>
