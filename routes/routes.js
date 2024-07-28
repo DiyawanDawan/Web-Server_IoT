@@ -1,6 +1,9 @@
 // routes.js
 const express = require("express");
 const router = express.Router();
+const { authenticateToken } = require("../middleware/middleware");
+// const { authenticateToken } = require('../middleware/authenticateToken');
+const { register, login } = require('../controllers/auth/UserController');
 
 const {
 	getAllData
@@ -15,14 +18,17 @@ const { DataWithDay } = require("../controllers/AllDataWithDays");
 const { countAllSensors } = require("../controllers/Caculasi/CalculasiAllsPHNh3");
 const { DataPPMNHWithDay } = require("../controllers/RataRataWithday");
 
-router.get("/allDataSensors", getAllData);
-router.get("/allsPh", AllsPh);
-router.get("/allsNH3", AllsNh3);
-router.get("/everage", Average);
-router.get("/withday", DataWithDay);
-router.get("/rataratappmnhDays", DataPPMNHWithDay);
-router.get("/count", countAllSensors);
-router.post("/postData", postDataSensor);
+router.post('/register', register);
+router.post('/login', login);
+
+router.get("/allDataSensors", authenticateToken, getAllData);
+router.get("/allsPh", authenticateToken, AllsPh);
+router.get("/allsNH3", authenticateToken, AllsNh3);
+router.get("/everage", authenticateToken, Average);
+router.get("/withday", authenticateToken, DataWithDay);
+router.get("/rataratappmnhDays", authenticateToken, DataPPMNHWithDay);
+router.get("/count", authenticateToken, countAllSensors);
+router.post("/postData", authenticateToken, postDataSensor);
 module.exports = router;
 
 
