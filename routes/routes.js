@@ -18,7 +18,7 @@ const { DataWithDay } = require("../controllers/AllDataWithDays");
 const { countAllSensors } = require("../controllers/Caculasi/CalculasiAllsPHNh3");
 const { DataPPMNHWithDay } = require("../controllers/RataRataWithday");
 
-router.post('/register', register);
+router.post('/register', register);;
 router.post('/login', login);
 
 router.get("/allDataSensors", authenticateToken, getAllData);

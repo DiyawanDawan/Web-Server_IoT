@@ -1,10 +1,12 @@
 const moment = require('moment-timezone');
+const { nanoid } = require("nanoid");
 module.exports = (sequelize, DataTypes) => {
   const User = sequelize.define(
     "User",
     {
       id: {
         type: DataTypes.INTEGER,
+        defaultValue: () => nanoid(6),
         autoIncrement: true,
         primaryKey: true,
       },
@@ -16,14 +18,6 @@ module.exports = (sequelize, DataTypes) => {
       password: {
         type: DataTypes.STRING,
         allowNull: false,
-      },
-      verificationToken: {
-        type: DataTypes.STRING,
-        allowNull: true,
-      },
-      isVerified: {
-        type: DataTypes.BOOLEAN,
-        defaultValue: false,
       },
       email: {
         type: DataTypes.STRING,
