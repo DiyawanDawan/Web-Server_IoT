@@ -5,10 +5,18 @@ module.exports = (sequelize, DataTypes) => {
     "User",
     {
       id: {
-        type: DataTypes.INTEGER,
+        type: DataTypes.STRING,
         defaultValue: () => nanoid(6),
         autoIncrement: true,
         primaryKey: true,
+      },
+      fullName: {
+        type: DataTypes.STRING,
+        allowNull: false
+      },
+      gender: {  // Menambahkan kolom gender
+        type: DataTypes.ENUM('Laki-Laki', 'Perempuan'),
+        allowNull: false,
       },
       username: {
         type: DataTypes.STRING,
@@ -26,6 +34,12 @@ module.exports = (sequelize, DataTypes) => {
         validate: {
           isEmail: true,
         },
+      },
+
+      role: {
+        type: DataTypes.ENUM('user', 'admin'),
+        allowNull: false,
+        defaultValue: 'user',
       },
       createdAt: {
         type: DataTypes.DATE,

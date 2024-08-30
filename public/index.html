@@ -32,7 +32,7 @@
             <li><a href="/v1/api/rataratappmnhDays">rataratappmnhDays</a></li>
             <li><a href="/v1/api/count">count</a></li>
         </ul>
-    </div>
+    </div>  
         <h2 id="postData">Post Data Sensor</h2>
         <p><strong>URL:</strong> <code>/v1/api/postData</code></p>
         <p><strong>Method:</strong> POST</p>
@@ -46,7 +46,16 @@
           }
         </code>
         </pre>
-        <p><strong>Response Example:</strong></p>
+        <p  class="response"><strong>Headers:</strong></p>
+          <pre>
+          <code>
+            {
+              "Authorization": " eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6Ii1obzdlYSIsInVzZXJuYW1lIjoiQXdhbiIsImlhdCI6MTcyMjMwOTE1MSwiZXhwIjoxNzIyMzEyNzUxfQ.jxWcCTutObz6Ilgy_H6svyHYoOMsoVn9EuiHyAUxxmU",
+              "Content-Type": "application/json"
+            }
+          </code>
+          </pre>
+        <h3 class="response"><strong>Response Example:</strong></h3>
         <pre>
         <code>
           {
@@ -66,7 +75,16 @@
         <h2 id="allDataSensors">Get All Data</h2>
         <p><strong>URL:</strong> <code>/v1/api/allDataSensors</code></p>
         <p><strong>Method:</strong> GET</p>
-        <p><strong>Response Example:</strong></p>
+        <p ><strong>Headers:</strong></p>
+          <pre>
+          <code>
+            {
+              "Authorization": " eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6Ii1obzdlYSIsInVzZXJuYW1lIjoiQXdhbiIsImlhdCI6MTcyMjMwOTE1MSwiZXhwIjoxNzIyMzEyNzUxfQ.jxWcCTutObz6Ilgy_H6svyHYoOMsoVn9EuiHyAUxxmU",
+              "Content-Type": "application/json"
+            }
+          </code>
+          </pre>
+        <p class="response"><strong>Response Example:</strong></p>
         <pre>
        <code>
         {
@@ -102,7 +120,16 @@
         <h2 id="allsPh">All PH Data</h2>
         <p><strong>URL:</strong><code>/v1/api/allsPh</code></p>
         <p><strong>Method:</strong> GET</p>
-        <p><strong>Response:</strong></p>
+        <p ><strong>Headers:</strong></p>
+        <pre>
+        <code>
+          {
+            "Authorization": " eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6Ii1obzdlYSIsInVzZXJuYW1lIjoiQXdhbiIsImlhdCI6MTcyMjMwOTE1MSwiZXhwIjoxNzIyMzEyNzUxfQ.jxWcCTutObz6Ilgy_H6svyHYoOMsoVn9EuiHyAUxxmU",
+            "Content-Type": "application/json"
+          }
+        </code>
+        </pre>
+        <h3 class="response"><strong>Response:</strong></h3>
         <pre>
         <code>
           {
@@ -130,7 +157,16 @@
         <h2 id="allsNH3">All NH3 Data</h2>
         <p><strong>URL:</strong> <code>/v1/api/allsNH3</code></p>
         <p><strong>Method:</strong> GET</p>
-        <p><strong>Response:</strong></p>
+        <p ><strong>Headers:</strong></p>
+        <pre>
+        <code>
+          {
+            "Authorization": " eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6Ii1obzdlYSIsInVzZXJuYW1lIjoiQXdhbiIsImlhdCI6MTcyMjMwOTE1MSwiZXhwIjoxNzIyMzEyNzUxfQ.jxWcCTutObz6Ilgy_H6svyHYoOMsoVn9EuiHyAUxxmU",
+            "Content-Type": "application/json"
+          }
+        </code>
+        </pre>
+        <h3 class="response"><strong>Response:</strong></h3>
         <pre>
         <code>
           {
@@ -173,7 +209,16 @@
         <pre>
           <code>GET /v1/api/average?tanggal=2024-07-20</code>
         </pre>
-        <h3>Response Example:</h3>
+        <p ><strong>Headers:</strong></p>
+        <pre>
+        <code>
+          {
+            "Authorization": " eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6Ii1obzdlYSIsInVzZXJuYW1lIjoiQXdhbiIsImlhdCI6MTcyMjMwOTE1MSwiZXhwIjoxNzIyMzEyNzUxfQ.jxWcCTutObz6Ilgy_H6svyHYoOMsoVn9EuiHyAUxxmU",
+            "Content-Type": "application/json"
+          }
+        </code>
+        </pre>
+        <h3 class="response">Response Example:</h3>
         <pre>
           <code>
             {
@@ -208,7 +253,16 @@
         <pre>
         <code>GET /v1/api/withday?tanggal=2024-07-20&sensorType=NH3</code>
           </pre>
-        <h3>Response Example:</h3>
+          <p ><strong>Headers:</strong></p>
+          <pre>
+          <code>
+            {
+              "Authorization": " eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6Ii1obzdlYSIsInVzZXJuYW1lIjoiQXdhbiIsImlhdCI6MTcyMjMwOTE1MSwiZXhwIjoxNzIyMzEyNzUxfQ.jxWcCTutObz6Ilgy_H6svyHYoOMsoVn9EuiHyAUxxmU",
+              "Content-Type": "application/json"
+            }
+          </code>
+          </pre>
+        <h3 class="response">Response Example:</h3>
         <pre>
           <code>
             {
@@ -241,7 +295,16 @@
               <li><strong>tanggal:</strong> (optional) The date in YYYY-MM-DD format. If not provided, the current date will be used.</li>
               <li><strong>sensorType:</strong> (optional) The type of sensor. Either 'NH3' or 'PH'. Default is 'NH3'.</li>
           </ul>
-          <p><strong>Response Example:</strong></p>
+          <p ><strong>Headers:</strong></p>
+          <pre>
+          <code>
+            {
+              "Authorization": " eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6Ii1obzdlYSIsInVzZXJuYW1lIjoiQXdhbiIsImlhdCI6MTcyMjMwOTE1MSwiZXhwIjoxNzIyMzEyNzUxfQ.jxWcCTutObz6Ilgy_H6svyHYoOMsoVn9EuiHyAUxxmU",
+              "Content-Type": "application/json"
+            }
+          </code>
+          </pre>
+          <p class="response"><strong>Response Example:</strong></p>
           <pre> 
             <code>{
               "success": true,
@@ -258,7 +321,16 @@
         <h2 id="count">Count All Sensors</h2>
         <p><strong>URL:</strong> <code>/v1/api/count</code></p>
         <p><strong>Method:</strong> GET</p>
-        <p><strong>Response Example:</strong></p>
+        <p ><strong>Headers:</strong></p>
+        <pre>
+        <code>
+          {
+            "Authorization": " eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6Ii1obzdlYSIsInVzZXJuYW1lIjoiQXdhbiIsImlhdCI6MTcyMjMwOTE1MSwiZXhwIjoxNzIyMzEyNzUxfQ.jxWcCTutObz6Ilgy_H6svyHYoOMsoVn9EuiHyAUxxmU",
+            "Content-Type": "application/json"
+          }
+        </code>
+        </pre>
+        <p class="response"><strong>Response Example:</strong></p>
         <pre>
         <code>
           {

@@ -16,5 +16,15 @@ function authenticateToken(req, res, next) {
 		next();
 	});
 }
+const authorizeRole = (roles) => {
+    return (req, res, next) => {
+        if (!req.user || !roles.includes(req.user.role)) {
+            return res.status(403).json({ message: 'Akses ditolak' });
+        }
+        next();
+    };
+};
 
-module.exports = { authenticateToken };
+
+
+module.exports = { authenticateToken, authorizeRole};

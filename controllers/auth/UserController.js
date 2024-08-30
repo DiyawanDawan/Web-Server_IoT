@@ -1,50 +1,84 @@
-const {User} = require('../../models');
+const {User, Sequelize} = require('../../models');
 const bcrypt = require('bcrypt');
 const crypto = require('crypto');
 const jwt = require('jsonwebtoken');
 const { Op } = require('sequelize'); 
 
 exports.register = async (req, res) => {
-    const { username, password, email } = req.body;
+    const {fullName, gender, username, email, password,  role } = req.body;
 
-    if (!username || !password || !email) {
-        return res.status(400).json({ message: 'Semua bidang wajib diisi' });
+    // Cek apakah semua field yang diperlukan ada
+    if (!username || !password || !email || !fullName || !gender) {
+        return res.status(400).json({error: true, message: 'Semua bidang wajib diisi' });
     }
 
-    // Validate password length and complexity
+    // Validasi panjang dan kompleksitas kata sandi
     const passwordRegex = /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*?&])[A-Za-z\d@$!%*?&]{8,}$/;
     if (!passwordRegex.test(password)) {
-        return res.status(400).json({ message: 'Kata sandi harus terdiri dari minimal 8 karakter dan terdiri dari kombinasi huruf, angka, dan simbol.' });
+        return res.status(400).json({error: true, message: 'Kata sandi harus terdiri dari minimal 8 karakter dan terdiri dari kombinasi huruf, angka, dan simbol.' });
     }
 
     try {
-        // Check if the email or username already exists
+        // Cek apakah username atau email sudah ada
         const existingUser = await User.findOne({ where: { [Op.or]: [{ username }, { email }] } });
         if (existingUser) {
-            return res.status(409).json({ message: 'Nama pengguna atau email yang sudah digunakan' });
+            return res.status(409).json({ error: true, message: 'Nama pengguna atau email sudah digunakan' });
         }
 
+        // Hash kata sandi
         const hashedPassword = await bcrypt.hash(password, 10);
-        const user = await User.create({ username, password: hashedPassword, email });
+        
+        // Set role default ke 'user' jika tidak ada
+        const userRole = role || 'user';
 
-        res.status(201).json({ message: 'Pengguna berhasil terdaftar', user: {
-            id: user.id,
-            username: user.username,
-            email: user.email
-        }});
+        // Buat pengguna baru
+        const user = await User.create({
+            fullName,
+            gender,
+            username,
+            email,
+            password: hashedPassword,
+            role: userRole
+        });
+
+        res.status(201).json({
+            message: 'Pengguna berhasil terdaftar',
+            user: {
+                id: user.id,
+                fullName: user.fullName,
+                gender: user.gender, 
+                username: user.username,
+                email: user.email,
+                role: user.role
+            }
+        });
     } catch (error) {
-        res.status(500).json({ message: 'Registrasi pengguna gagal', error: error.message });
+        console.error('Error saat registrasi:', error);
+        res.status(500).json({error: true, message: 'Registrasi pengguna gagal', error: error.message });
     }
 };
 
 
+
 exports.login = async (req, res) => {
-    const { email, password } = req.body;
+    const { email, username, password } = req.body;
 
     try {
-        const user = await User.findOne({ where: { email } });
+          // Periksa apakah email atau username disediakan
+          if (!email && !username) {
+            return res.status(400).json({ message: 'Email atau username harus disediakan' });
+        }
+
+        const user = await User.findOne({
+            where: {
+                [Sequelize.Op.or]: [
+                    email ? { email } : null,
+                    username ? { username } : null
+                ].filter(Boolean) // Menghapus nilai null atau undefined dari array
+            }
+        });
         if (!user) {
-            return res.status(401).json({ message: 'Email tidak valid' });
+            return res.status(401).json({ message: 'Email salah ' });
         }
 
         const isPasswordValid = await bcrypt.compare(password, user.password);
@@ -52,11 +86,14 @@ exports.login = async (req, res) => {
             return res.status(401).json({ message: 'Kata sandi salah' });
         }
 
-        const token = jwt.sign({ id: user.id, username: user.username }, process.env.JWT_SECRET, { expiresIn: '1h' });
+        const token = jwt.sign({ id: user.id, username: user.username, name: user.name,  role: user.role}, process.env.JWT_SECRET); // tambahkan 'name' di payload token
         res.json({ token, user: {
             id: user.id,
             username: user.username,
-            email: user.email
+            fullName: user.fullName,
+            email: user.email,
+            gender: user.gender,
+            role: user.role
         } });
     } catch (error) {
         res.status(500).json({ message: 'Login gagal', error: error.message });

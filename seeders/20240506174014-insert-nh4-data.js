@@ -19,16 +19,27 @@ module.exports = {
      * }], {});
     */
 
-     // Menambahkan data ke dalam tabel DataSensor
-     await queryInterface.bulkInsert("DataSensor", [
-      {
+      // Menambahkan 10 data untuk NH3
+      const nh3Data = Array.from({ length: 10 }).map(() => ({
         id: nanoid(6),
-        sensorType: "NH3", // Tambahkan sensorType untuk MQ-135 (penyesuaian penamaan)
-        value: 3.4, // Tambahkan value untuk MQ-135
-        unit: "ppm", // Tambahkan unit untuk MQ-135
-        createdAt:  currentTime.toDate(),
-      },
-    ]);
+        sensorType: 'NH3',
+        value: parseFloat((Math.random() * 10).toFixed(2)), // Nilai acak antara 0 dan 10
+        unit: 'ppm',
+        createdAt: currentTime.toDate(),
+      }));
+  
+      // Menambahkan 10 data untuk pH
+      const phData = Array.from({ length: 10 }).map(() => ({
+        id: nanoid(6),
+        sensorType: 'pH',
+        value: parseFloat((Math.random() * 14).toFixed(2)), // Nilai acak antara 0 dan 14 untuk pH
+        unit: 'pH',
+        createdAt: currentTime.toDate(),
+      }));
+  
+      // Menyisipkan data ke dalam tabel DataSensor
+      await queryInterface.bulkInsert('DataSensor', [...nh3Data, ...phData], {});
+  
   },
 
   async down(queryInterface, Sequelize) {

@@ -1,13 +1,16 @@
 "use strict";
 
+const { nanoid } = require('nanoid');
+
 /** @type {import('sequelize-cli').Migration} */
 module.exports = {
   async up(queryInterface, Sequelize) {
     // Buat tabel DataSensor
     await queryInterface.createTable("DataSensor", {
       id: {
-        type: Sequelize.INTEGER,
-        autoIncrement: true,
+        type: Sequelize.STRING,
+        defaultValue: () => nanoid(6),
+        autoIncrement: false,
         primaryKey: true,
       },
       sensorType: {
@@ -37,9 +40,18 @@ module.exports = {
     // Buat tabel User
     await queryInterface.createTable("User", {
       id: {
-        type: Sequelize.INTEGER,
-        autoIncrement: true,
+        type: Sequelize.STRING,
+        defaultValue: () => nanoid(6),
+        autoIncrement: false,
         primaryKey: true,
+      },
+      fullName: {
+        type: Sequelize.STRING,
+        allowNull: false
+      },
+      gender: {  // Menambahkan kolom gender
+        type: Sequelize.ENUM('Laki-Laki', 'Perempuan'),
+        allowNull: false,
       },
       username: {
         type: Sequelize.STRING,
@@ -57,6 +69,11 @@ module.exports = {
         validate: {
           isEmail: true,
         },
+      },
+      role: {
+        type: Sequelize.ENUM('user', 'admin'),
+        allowNull: false,
+        defaultValue: 'user',
       },
       createdAt: {
         type: Sequelize.DATE,
