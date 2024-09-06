@@ -14,7 +14,7 @@ module.exports = (sequelize, DataTypes) => {
         type: DataTypes.STRING,
         allowNull: false
       },
-      gender: {  // Menambahkan kolom gender
+      gender: {  
         type: DataTypes.ENUM('Laki-Laki', 'Perempuan'),
         allowNull: false,
       },
@@ -35,7 +35,6 @@ module.exports = (sequelize, DataTypes) => {
           isEmail: true,
         },
       },
-
       role: {
         type: DataTypes.ENUM('user', 'admin'),
         allowNull: false,

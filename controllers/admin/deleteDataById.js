@@ -52,7 +52,7 @@ exports.deleteUserById = async (req, res) => {
 
 exports.updateUser = async (req, res) => {
     const { id } = req.params;
-    const { fullName, email, password, role, username } = req.body;
+    const { fullName,  gender, email, password, role, username } = req.body;
 
     try {
         const user = await User.findByPk(id);
@@ -62,7 +62,7 @@ exports.updateUser = async (req, res) => {
         }
 
         // Logging incoming data
-        console.log('Update Request Data:', { fullName, email, username, role, password });
+        console.log('Update Request Data:', { fullName,  gender, email, username, role, password });
 
         if (email) {
             const emailExists = await User.findOne({
@@ -89,6 +89,7 @@ exports.updateUser = async (req, res) => {
         }
 
         user.fullName = fullName || user.fullName;
+        user.gender =  gender  ||  user.gender;
         user.email = email || user.email;
         user.username = username || user.username;
 

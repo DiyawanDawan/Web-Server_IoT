@@ -17,10 +17,13 @@ const { countAllSensors } = require("../controllers/Caculasi/CalculasiAllsPHNh3"
 const { DataPPMNHWithDay } = require("../controllers/RataRataWithday");
 const { getProfile } = require("../controllers/userProfile");
 const { deleteDataById, getAllUsers, deleteUserById, updateUser, getUserById } = require("../controllers/admin/deleteDataById");
+// const { requestPasswordReset, resetPassword } = require("../controllers/LupaPassword");
 
 // Route pendaftaran dan login
 router.post('/register', register);
 router.post('/login', login);
+// router.post('/lupa-password', requestPasswordReset);
+// router.post('/reset-password/:token', resetPassword);
 
 // Route yang hanya dapat diakses oleh admin
 router.get('/admin-dashboard', authenticateToken, authorizeRole(['admin']), (req, res) => {
